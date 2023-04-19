@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+// Options for the GRPC
+option java_multiple_files = true;
+option java_package = "Heater";
+option java_outer_classname = "HeaterServiceImpl";
+
+package SmartEnergy;
+
+// Interface exported by the server
+// Service definition
+service HeaterService{
+
+  // Method - Unary RPC Method
+  rpc Heater(TemperatureRequest) returns (TemperatureResponse);
+}
+
+/*
+   Message Definition:
+   When the indoor temperature reaches the settled point, the Server sends a
+   message to the Client informing that the heating system is shutting down
+*/
+
+message TemperatureRequest {
+}
+
+message TemperatureResponse {
+  string heatingOff = 1;
+}

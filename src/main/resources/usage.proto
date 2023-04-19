@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+// Options for the GRPC
+option java_multiple_files = true;
+option java_package = "Usage";
+option java_outer_classname = "UsageServiceImpl";
+
+package SmartEnergy;
+
+// Service Definition 4
+service UsageService{
+
+  // Bidirectional Stream RPC Method
+  rpc Usage (stream AverageRequest) returns (stream AverageResponse) {}
+}
+
+/*
+   Message Definition:
+   The Client streams daily usage data and the Server streams the average of usage
+*/
+
+message AverageRequest {
+  double avgReq = 1;
+}
+
+message AverageResponse {
+  string avgRes  = 1;
+}
